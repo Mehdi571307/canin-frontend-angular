@@ -1,0 +1,40 @@
+
+<form [formGroup]="formulaire" (ngSubmit)="onClicValider()">
+    <mat-form-field appearance="outline">
+        <mat-label>Nom du cours</mat-label>
+        <input matInput formControlName="nom" />
+        @if (formulaire.get('nom')?.hasError('required')) {
+        <mat-error>Le nom est obligatoire</mat-error>
+        } @else if (formulaire.get('nom')?.hasError('maxlength')) {
+        <mat-error>20 caractères maximum</mat-error>
+        } @else if (formulaire.get('nom')?.hasError('minlength')) {
+        <mat-error>3 caractères minimum</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Date et heure</mat-label>
+        <input matInput type="datetime-local" formControlName="date_cours" />
+        <mat-error>La date/heure est obligatoire</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Places disponibles</mat-label>
+        <input matInput type="number" formControlName="places_disponibles" min="1" />
+        @if (formulaire.get('places_disponibles')?.hasError('required')) {
+        <mat-error>Nombre de places obligatoire</mat-error>
+        } @else if (formulaire.get('places_disponibles')?.hasError('min')) {
+        <mat-error>Au moins 1 place</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Image (chemin ou URL)</mat-label>
+        <input matInput formControlName="image_path" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="formulaire.invalid">
+        Valider
+    </button>
+    <button mat-raised-button routerLink="/accueil" color="accent">
+        Retour
+    </button>
+
+</form>
+  

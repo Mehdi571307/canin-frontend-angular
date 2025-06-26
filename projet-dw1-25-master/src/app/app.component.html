@@ -1,0 +1,72 @@
+<nav
+  class="navbar navbar-expand-sm navbar-dark bg-warning text-dark"
+  aria-label="Third navbar example"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" routerLink="/accueil">Projet Eval Canin</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample03"
+      aria-controls="navbarsExample03"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample03">
+      <ul class="navbar-nav d-flex justify-content-center mx-auto gap-2 mb-4 mb-sm-0">
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-medium" routerLink="/accueil" routerLinkActive="active"
+            >Accueil</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-medium" routerLink="/chiens" routerLinkActive="active">Chiens</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-medium" routerLink="/cours" routerLinkActive="active">Cours</a>
+        </li>
+
+        @if (!auth.connecte) {
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-medium" routerLink="/connexion" routerLinkActive="active"
+            >Connexion</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link text-dark fw-medium"
+            routerLink="/inscription"
+            routerLinkActive="active"
+            >Inscription</a
+          >
+        </li>
+        } @else {
+        <li class="nav-item text-dark fw-medium">
+          <a
+            class="nav-link"
+            routerLink="/connexion"
+            (click)="onClickDeconnexion()"
+            >Deconnexion</a
+          >
+        </li>
+        }
+      </ul>
+      <form role="search">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form>
+    </div>
+  </div>
+</nav>
+
+<router-outlet />
