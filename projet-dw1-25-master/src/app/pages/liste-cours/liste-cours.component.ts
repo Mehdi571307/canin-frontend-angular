@@ -1,9 +1,10 @@
 import { Component, inject, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button'; 
 import { CommonModule } from '@angular/common';
-import { NotificationService } from 'src/app/services/notification.service';
+import { NotificationService } from '../../services/notification.service';
+
 
 export interface Cours {
   id: number;
